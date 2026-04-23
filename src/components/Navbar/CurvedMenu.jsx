@@ -94,7 +94,7 @@ export const CurvedMenu = ({ setIsActive, navItems = defaultNavItems }) => {
                 ))}
             </div>
             <div className="p-6 md:p-10 text-black/50 text-xs md:text-sm">
-                <p>© 2025 Vinit Ghanekar | ML Engineer</p>
+                <p>© 2026 Vinit Ghanekar | ML Engineer</p>
             </div>
             <Curve />
         </motion.div>

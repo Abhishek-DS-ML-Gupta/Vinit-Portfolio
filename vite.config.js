@@ -12,4 +12,17 @@ export default defineConfig({
   optimizeDeps: {
     include: ["gsap"],
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-gsap': ['gsap', '@gsap/react'],
+          'vendor-motion': ['framer-motion'],
+          'vendor-ui': ['react-responsive', 'react-icons'],
+        },
+      },
+    },
+  },
 });

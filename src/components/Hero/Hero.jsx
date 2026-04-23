@@ -52,6 +52,7 @@ const Hero = () => {
                         loop
                         muted
                         playsInline
+                        preload="none"
                         className="absolute inset-0 md:w-full md:h-full object-cover z-10 pointer-events-none object-center opacity-50 mix-blend-hard-light md:top-0 top-[5%] h-[90%]  rounded-[2rem] md:px-0"
                     ></video>
                 </div>

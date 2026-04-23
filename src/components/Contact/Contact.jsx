@@ -1,0 +1,85 @@
+import { useState } from "react";
+import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
+import { contactH1LG, contactReviewLG } from "../../constants/contact";
+
+import man from "../../assets/man.png";
+
+const reviewImages = {
+    review1: man,
+    review2: man,
+    man
+};
+
+const Contact = () => {
+    const [index, setIndex] = useState(0);
+    const total = contactH1LG.length;
+
+    const handleNext = () => {
+        setIndex((prev) => (prev + 1) % total);
+    };
+
+    const handlePrev = () => {
+        setIndex((prev) => (prev - 1 + total) % total);
+    };
+
+    const progressWidth = contactReviewLG[index][3];
+
+    return (
+        <section id="contact" className='w-sereen h-dvh p-8 flex flex-col justify-center items-center'>
+            <div className='w-full text-left'>
+                <p className='text-[.7rem] font-bold text-[#eae5dd] project-subtitle text-left'>
+                    Get in touch
+                </p>
+
+                <div>
+                    <h1 className='text-[#f4efe7] text-7xl mt-4 mb-6'>
+                        {contactH1LG[index].map((line, i) => (
+                            <span key={i}>
+                                {line}<br />
+                            </span>
+                        ))}
+                    </h1>
+                </div>
+
+                <div className='flex items-center gap-4 mt-12'>
+                    <img
+                        src={reviewImages[contactReviewLG[index][2]]}
+                        alt="review img"
+                        className='w-[4.5vw] rounded-4xl'
+                    />
+                    <p className="text-[#aca192] text-[0.7rem]">
+                        {contactReviewLG[index][0]}<br />
+                        ({contactReviewLG[index][1]})
+                    </p>
+                </div>
+
+                <div className="flex justify-between items-center mt-14">
+                    <div className="flex gap-1">
+                        <button
+                            onClick={handlePrev}
+                            className='border-[1px] p-1 border-[#aaa090] hover:bg-[#aaa090] rounded-4xl'
+                        >
+                            <IoMdArrowBack className="text-[#f1ece4] w-[2vw] h-[3.4vh]" />
+                        </button>
+
+                        <button
+                            onClick={handleNext}
+                            className='border-[1px] p-1 border-[#aaa090] rounded-4xl'
+                        >
+                            <IoMdArrowForward className="text-[#f1ece4] w-[2vw] h-[3.4vh]" />
+                        </button>
+                    </div>
+
+                    <div className="relative z-9 w-70 h-[0.1rem] bg-[#4f4b48]">
+                        <div
+                            className="progress-line absolute z-10 bg-[#f4efe7] h-[0.1rem] top-1/2 -translate-y-1/2 left-0"
+                            style={{ width: progressWidth }}
+                        ></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Contact;
